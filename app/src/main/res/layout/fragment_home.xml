@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="300dp"
+                android:orientation="vertical"
+                android:background="@drawable/headerbg">
+                <TextView
+                    android:id="@+id/header_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hi,Selamat Datang"
+                    android:fontFamily="@font/poppins_medium"
+                    android:paddingTop="20dp"
+                    android:paddingLeft="50dp"
+                    android:textSize="10dp"/>
+                <TextView
+                    android:id="@+id/nama_lengkap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="50dp"
+                    android:textSize="15dp"
+                    android:paddingTop="30dp"
+                    android:text="Nama Lengkap Karyawan"
+                    android:fontFamily="@font/poppins_black"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>
