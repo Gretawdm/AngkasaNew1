@@ -2,4 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="kuning">#D1B680</color>
+    <color name="abuabu">#101F24</color>
+    <color name="merah">#E22525</color>
+    <color name="hijau">#29E225</color>
+    <color name="GreyText">#AAAAAA</color>
+    <color name="colorPrimaryDark">#101F24</color>
 </resources>

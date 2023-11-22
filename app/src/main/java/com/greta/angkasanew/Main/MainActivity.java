@@ -1,4 +1,4 @@
-package com.greta.angkasanew;
+package com.greta.angkasanew.Main;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,16 +8,20 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.FrameLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
+import com.greta.angkasanew.AKun.AkunFragment;
+import com.greta.angkasanew.Home.HomeFragment;
+import com.greta.angkasanew.Pesanan.Pesanan_Masuk_Fragment;
+import com.greta.angkasanew.R;
 
 public class MainActivity extends AppCompatActivity {
 
     FloatingActionButton fab;
+    private FrameLayout flFragment;
     BottomNavigationView bottomNavigationView;
 
     @Override
@@ -25,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (savedInstanceState == null){
+        if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, new HomeFragment()).commit();
         }
 
@@ -40,11 +44,11 @@ public class MainActivity extends AppCompatActivity {
                 } else if (item.getItemId() == R.id.pemesanan) {
                     getfragment(new Pesanan_Masuk_Fragment());
                     return true;
-                } else if (item.getItemId() == R.id.packet) {
-                    getfragment(new ProductFragment());
+                } else if (item.getItemId() == R.id.diskon) {
+                    getfragment(new DiskonFragment());
                     return true;
-                } else if(item.getItemId() == R.id.gallery) {
-                    getfragment(new GalleryFragment());
+                } else if (item.getItemId() == R.id.akun) {
+                    getfragment(new AkunFragment());
                     return true;
                 }
                 return false;
@@ -52,7 +56,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void getfragment(Fragment fragment){
+
+
+
+
+        private void getfragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.flFragment, fragment);

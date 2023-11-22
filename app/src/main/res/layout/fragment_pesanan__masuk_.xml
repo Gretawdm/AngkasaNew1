@@ -1,14 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Pesanan_Masuk_Fragment">
+    android:orientation="vertical"
+    tools:context=".Pesanan.Pesanan_Masuk_Fragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="hello_bl" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <LinearLayout
+            android:id="@+id/linear"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:orientation="vertical"
+            android:background="#101F24">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:paddingLeft="30dp"
+                android:paddingTop="30dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_medium"
+                android:textSize="15sp"
+                android:text="Hi, Selamat Datang"/>
+
+            <TextView
+                android:id="@+id/nama_lengkap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="Nama Pengguna"
+                android:fontFamily="@font/poppins_black"
+                android:layout_marginTop="7dp"
+                android:layout_marginLeft="30dp"
+                android:textSize="20sp" />
+
+            <com.google.android.material.tabs.TabLayout
+                app:tabIndicatorColor="@color/white"
+                app:tabSelectedTextColor="@color/white"
+                app:tabTextColor="@color/white"
+                app:tabIndicator="@color/white"
+                app:tabRippleColor="@color/white"
+                android:background="#101F24"
+                app:tabTextAppearance="@style/TabLayoutTextStyle"
+                android:id="@+id/tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_below="@+id/linear">
+            <com.greta.angkasanew.CustomViewPager
+                android:id="@+id/pesanan_viewpager"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/tab_layout"
+                android:layout_height="match_parent"/>
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>

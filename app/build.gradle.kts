@@ -16,6 +16,10 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    dataBinding{
+        enable = true
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -35,6 +39,11 @@ android {
 }
 
 dependencies {
+
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
+    implementation("com.makeramen:roundedimageview:2.3.0")
+    implementation("com.github.bumptech.glide:glide:4.16.0")//buat glide
+
 
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.10.0")

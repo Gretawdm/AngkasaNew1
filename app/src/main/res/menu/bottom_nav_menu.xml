@@ -11,13 +11,13 @@
         android:title="Orders" />
 
     <item
-        android:id="@+id/packet"
+        android:id="@+id/diskon"
         android:icon="@drawable/baseline_discount_24"
         android:title="Paket" />
 
     <item
-        android:id="@+id/gallery"
-        android:icon="@drawable/baseline_photo_library_24"
-        android:title="Gallery" />
+        android:id="@+id/akun"
+        android:icon="@drawable/ic_person"
+        android:title="Akun" />
 
 </menu>
