@@ -6,18 +6,11 @@ public class PemesananModel {
     private String tanggal;
     private String id_pemesanan;
     private String no_hp;
-
-
-
     private String nama_layout;
     private String alamat;
-
-
-
     private String quota;
     private String unlimited;
-
-    private  String bukti_pembayaran;
+    String bukti_pembayaran;
 
     public PemesananModel(String namacustomer, String namapackage, String tanggal, String id_pemesanan, String no_hp, String nama_layout, String alamat, String quota, String unlimited, String bukti_pembayaran) {
         this.namacustomer = namacustomer;
@@ -50,8 +43,6 @@ public class PemesananModel {
     public String getNo_hp() {
         return no_hp;
     }
-
-
 
     public void setNo_hp(String no_hp) {
         this.no_hp = no_hp;

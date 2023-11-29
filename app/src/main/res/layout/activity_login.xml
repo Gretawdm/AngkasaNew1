@@ -60,13 +60,14 @@
 
 
             <ImageView
+                android:transitionName="sharedLogo"
                 android:id="@+id/image"
                 android:layout_width="120dp"
                 android:layout_height="100dp"
                 android:layout_marginStart="112dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="284dp"
-                android:background="@drawable/angks"
+                android:background="@drawable/logo_angkasa"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -82,6 +83,7 @@
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
+                app:boxStrokeWidth="2dp"
                 app:boxCornerRadiusTopStart="10dp"
                 app:boxStrokeColor="@color/colorPrimaryDark"
                 app:hintTextColor="@color/colorPrimaryDark"
@@ -113,6 +115,7 @@
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
+                app:boxStrokeWidth="2dp"
                 app:boxCornerRadiusTopStart="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

@@ -101,12 +101,15 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_home, container, false);
-        recyclerview = rootView.findViewById(R.id.rycle);
-        recyclerview.setHasFixedSize(true);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-        recyclerview.setLayoutManager(layoutManager);
+        setRecyclerview(rootView); //manggil method recycler pesanan
 
         pemesananModelArrayList = new ArrayList<>();
+        // Mendapatkan referensi TextView
+        txtNamaLengkap = (TextView) rootView.findViewById(R.id.nama_lengkap);
+        // Mendapatkan data dari Intent
+        Bundle extras = getActivity().getIntent().getExtras();
+        String nama_lengkap = extras.getString(KEY_NAME);
+        txtNamaLengkap.setText(nama_lengkap);
 
         if (getContext() != null) {
             requestQueue = Volley.newRequestQueue(getContext());
@@ -116,6 +119,20 @@ public class HomeFragment extends Fragment {
         }
 
         return rootView;
+    }
+
+    //method recyler pesanan
+    private void setRecyclerview(View rootView){
+        recyclerview = rootView.findViewById(R.id.rycle);
+        recyclerview.setHasFixedSize(true);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+        recyclerview.setLayoutManager(layoutManager);
+
+      /*  RecyclerView recyclerTagihan = view.findViewById(R.id.recycletagihan);
+        recyclerTagihan.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
+        TagihanAdapter adapterTagihan = new TagihanAdapter(getContext(), data,bottomSheet);
+        recyclerTagihan.setAdapter(adapterTagihan);*/ //ini buat agar tampilan layout bisa digeser kanan kiri
+
     }
 
     private void perseJSON(){
@@ -164,13 +181,7 @@ public class HomeFragment extends Fragment {
 
 
 
-        // Mendapatkan referensi TextView
-       /* txtNamaLengkap = (TextView) view.findViewById(R.id.nama_lengkap);
-        // Mendapatkan data dari Intent
-        Bundle extras = getActivity().getIntent().getExtras();
-        String nama_lengkap = extras.getString(KEY_NAME);
-        txtNamaLengkap.setText(nama_lengkap);
-        setRecyclerview(view);*/
+
 
         //slidergalleryhome
         /*ViewPager2 viewPager2 = (ViewPager2) view.findViewById(R.id.smartSliderGallery);

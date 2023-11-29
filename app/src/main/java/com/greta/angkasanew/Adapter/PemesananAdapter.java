@@ -61,7 +61,7 @@ public class PemesananAdapter extends RecyclerView.Adapter<PemesananAdapter.Peme
             tanggalPemesanan = itemView.findViewById(R.id.txt_tanggal);
 
             //menambahkan listener klik pada itemview
-            itemView.setOnClickListener(this);
+           /* itemView.setOnClickListener(this);*/
         }
         @Override
         public void onClick(View v) {
@@ -75,6 +75,7 @@ public class PemesananAdapter extends RecyclerView.Adapter<PemesananAdapter.Peme
             intent.putExtra("quota", pemesananModelArrayList.get(position).getQuota());
             intent.putExtra("unlimited", pemesananModelArrayList.get(position).getUnlimited());
             intent.putExtra("layout", pemesananModelArrayList.get(position).getNama_layout());
+           /* intent.putExtra("harga", pemesananModelArrayList.get(position).getHarga());*/
             intent.putExtra("bukti_bayar", pemesananModelArrayList.get(position).getBukti_pembayaran());
             context.startActivity(intent);
         }

@@ -1,16 +1,25 @@
 package com.greta.angkasanew.Login;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.TransitionRes;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.ViewCompat;
+import androidx.transition.ChangeBounds;
+import androidx.transition.ChangeImageTransform;
+import androidx.transition.TransitionManager;
+import androidx.transition.TransitionSet;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Patterns;
+import android.view.ViewGroup;
 import android.widget.Button;
 
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -31,12 +40,20 @@ import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText txtEmail, txtPassword;
+    ImageView imageView;
     private Button btnLogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        ImageView imageView = findViewById(R.id.image);
+        // Set transition name pada ImageView
+        ViewCompat.setTransitionName(imageView, "sharedLogo");
+        TransitionSet transisiLayout = new TransitionSet()
+                .addTransition(new ChangeBounds())
+                .addTransition(new ChangeImageTransform());
+        TransitionManager.beginDelayedTransition((ViewGroup) findViewById(android.R.id.content), transisiLayout);
         init();
     }
 
@@ -82,9 +99,7 @@ public class LoginActivity extends AppCompatActivity {
                         intent.putExtra("NAMA",  res.getString("nama_lengkap"));
                         startActivity(intent);
                         finish();
-
-
-                       /* startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        /*startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         finish();*/
 
                         Toast.makeText(getApplicationContext(), "Login Sukses!", Toast.LENGTH_SHORT).show();
@@ -140,7 +155,7 @@ public class LoginActivity extends AppCompatActivity {
             }else {
                 isValidPassword = true;
             }
-            btnLogin.setEnabled(isValidEmail && isValidPassword);
+           /* btnLogin.setEnabled(isValidEmail && isValidPassword);*/
 
             return isValidEmail && isValidPassword;
         }

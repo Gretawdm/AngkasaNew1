@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +19,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.greta.angkasanew.API.Api;
-import com.greta.angkasanew.Adapter.PemesananAdapter;
-import com.greta.angkasanew.Model.PemesananModel;
+import com.greta.angkasanew.Adapter.PemesananJemberAdapter;
+import com.greta.angkasanew.Model.PemesananJemberModel;
 import com.greta.angkasanew.R;
 
 import org.json.JSONArray;
@@ -36,11 +37,11 @@ import java.util.ArrayList;
 public class JemberFragment extends Fragment {
     private RequestQueue requestQueue;
     private View rootView;
-    private ArrayList<PemesananModel> pemesananModelArrayList;
+    private ArrayList<PemesananJemberModel> pemesananJemberModelArrayList;
     private String[] nama_package;
     private String[] nama_cust;
     private RecyclerView recyclerview;
-    private PemesananAdapter pemesananAdapter;
+    private PemesananJemberAdapter pemesananJemberAdapter;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -62,7 +63,7 @@ public class JemberFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment JemberFragment.
+     * @return A new instance of fragment LuarJemberFragment.
      */
     // TODO: Rename and change types and number of parameters
     public static JemberFragment newInstance(String param1, String param2) {
@@ -86,14 +87,13 @@ public class JemberFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         rootView = inflater.inflate(R.layout.fragment_jember, container, false);
         recyclerview = rootView.findViewById(R.id.ryclejember);
-        recyclerview.setHasFixedSize(true);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-        recyclerview.setLayoutManager(layoutManager);
+        recyclerview.setHasFixedSize(true); //lebar dan tinggi konsisten.
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext()); //menyusun item
+        recyclerview.setLayoutManager(layoutManager); //mengontrol tata letak
 
-        pemesananModelArrayList = new ArrayList<>();
+        pemesananJemberModelArrayList = new ArrayList<>();
         if (getContext() != null) {
             requestQueue = Volley.newRequestQueue(getContext());
             perseJSON(); //panggil method JSON
@@ -103,7 +103,6 @@ public class JemberFragment extends Fragment {
         return rootView;
     }
     private void perseJSON(){
-        /*String url = "http://192.168.1.3/project_sem3/ApiPemesanan.php";*/
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, Api.urlPemesananJember, null,
                 new Response.Listener<JSONObject>() {
@@ -122,15 +121,17 @@ public class JemberFragment extends Fragment {
                                 String no_hp = hit.getString("no_hp");
                                 String nama_layout = hit.getString("nama_layout");
                                 String quota = hit.getString("nama_quota");
+                                String harga_qouta = hit.getString("asd");
                                 String unlimited = hit.getString("nama_unlimited");
-                                String bukti_bayar = hit.getString("bukti_bayar");
+                                String harga_unlimited = hit.getString("harga_unlimited");
                                 String alamat = hit.getString("alamat_acara");
-
-                                pemesananModelArrayList.add(new PemesananModel( nama_cust,nama_package, tanggal, id,no_hp,nama_layout,alamat,quota,unlimited,bukti_bayar));
+                                String bukti_bayar = hit.getString("bukti_bayar");
+                              /*  Log.w("test",harga_qouta);*/
+                                pemesananJemberModelArrayList.add(new PemesananJemberModel( nama_cust,nama_package, tanggal, id,no_hp,nama_layout,alamat,quota,unlimited,harga_qouta,harga_unlimited,bukti_bayar));
                             }
 
-                            pemesananAdapter = new PemesananAdapter(getContext(), pemesananModelArrayList);
-                            recyclerview.setAdapter(pemesananAdapter);
+                            pemesananJemberAdapter = new PemesananJemberAdapter(getContext(), pemesananJemberModelArrayList);
+                            recyclerview.setAdapter(pemesananJemberAdapter);
 
                         } catch (JSONException e) {
                             e.printStackTrace();

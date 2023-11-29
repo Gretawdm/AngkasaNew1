@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -18,8 +19,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.greta.angkasanew.API.Api;
-import com.greta.angkasanew.Adapter.PemesananAdapter;
-import com.greta.angkasanew.Model.PemesananModel;
+import com.greta.angkasanew.Adapter.PemesananPromoAdapter;
+import com.greta.angkasanew.Model.PemesananPromoModel;
 import com.greta.angkasanew.R;
 
 import org.json.JSONArray;
@@ -36,11 +37,9 @@ import java.util.ArrayList;
 public class PromoFragment extends Fragment {
     private RequestQueue requestQueue;
     private View rootView;
-    private ArrayList<PemesananModel> pemesananModelArrayList;
-    private String[] nama_package;
-    private String[] nama_cust;
+    private ArrayList<PemesananPromoModel> pemesananPromoModelArrayList;
     private RecyclerView recyclerview;
-    private PemesananAdapter pemesananAdapter;
+    private PemesananPromoAdapter pemesananPromoAdapter;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -86,12 +85,11 @@ public class PromoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_promo, container, false);
-        recyclerview = rootView.findViewById(R.id.ryclepromo);
+        recyclerview = rootView.findViewById(R.id.ryclepemesananpromo);
         recyclerview.setHasFixedSize(true); //lebar dan tinggi konsisten.
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext()); //menyusun item
         recyclerview.setLayoutManager(layoutManager); //mengontrol tata letak
-
-        pemesananModelArrayList = new ArrayList<>();
+        pemesananPromoModelArrayList = new ArrayList<>();
         if (getContext() != null) {
             requestQueue = Volley.newRequestQueue(getContext());
             perseJSON(); //panggil method JSON
@@ -112,22 +110,21 @@ public class PromoFragment extends Fragment {
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject hit = jsonArray.getJSONObject(i);
 
-                                String nama_package = hit.getString("nama_package");
-                                String nama_cust = hit.getString("nama_cust");
-                                String tanggal = hit.getString("tanggal_acara");
-                                String id = hit.getString("id_pemesanan");
-                                String no_hp = hit.getString("no_hp");
-                                String nama_layout = hit.getString("nama_layout");
-                                String quota = hit.getString("nama_quota");
-                                String unlimited = hit.getString("nama_unlimited");
-                                String bukti_bayar = hit.getString("bukti_bayar");
+                                String Bulan = hit.getString("bulan");
+                                String Status = hit.getString("status");
+                                String judulpromo = hit.getString("judul_promo");
+                                String promo = hit.getString("nama_promo");
+                                String namacustomer = hit.getString("nama_cust");
+                                String No_telp = hit.getString("no_hp");
                                 String alamat = hit.getString("alamat_acara");
+                                String harga = hit.getString("harga_promo");
+                                String id = hit.getString("id_pemesanan");
 
-                                pemesananModelArrayList.add(new PemesananModel( nama_cust,nama_package, tanggal, id,no_hp,nama_layout,alamat,quota,unlimited,bukti_bayar));
+                                pemesananPromoModelArrayList.add(new PemesananPromoModel(judulpromo,namacustomer,Status,id,promo,No_telp,alamat,harga,Bulan));
                             }
 
-                            pemesananAdapter = new PemesananAdapter(getContext(), pemesananModelArrayList);
-                            recyclerview.setAdapter(pemesananAdapter);
+                            pemesananPromoAdapter = new PemesananPromoAdapter(getContext(), pemesananPromoModelArrayList);
+                            recyclerview.setAdapter(pemesananPromoAdapter);
 
                         } catch (JSONException e) {
                             e.printStackTrace();

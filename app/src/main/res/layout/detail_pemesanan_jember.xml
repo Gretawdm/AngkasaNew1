@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/bgactivity"
     android:layout_height="match_parent"
-    tools:context=".Pesanan.DetailPesanan">
+    tools:context=".Pesanan.DetailPemesananJember">
 
     <LinearLayout
         android:id="@+id/linear"
@@ -22,7 +22,7 @@
             android:layout_height="match_parent"
             android:fontFamily="@font/poppins_black"
             android:gravity="center"
-            android:text="Detail Pemesanan"
+            android:text="Detail Pemesanan Jember"
             android:textColor="@color/black"
             android:textSize="18sp" />
     </LinearLayout>
@@ -38,10 +38,10 @@
             android:layout_height="580dp"
             app:cardCornerRadius="20dp"
             app:cardElevation="20dp"
+            android:layout_gravity="center"
             app:cardBackgroundColor="@color/abuabu"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginTop="20dp">
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp">
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -60,6 +60,12 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:id="@+id/id_pemesanan"/>
+
+                <TextView
                     android:paddingTop="15dp"
                     android:layout_below="@+id/linear"
                     android:id="@+id/text1"
@@ -69,20 +75,22 @@
                     android:text="Nama Customer"
                     android:paddingStart="20dp"
                     android:textStyle="bold"
-                    android:fontFamily="@font/poppins_medium"
+                    android:fontFamily="@font/poppins_black"
                     android:textSize="14sp"/>
                 <TextView
-                    android:id="@+id/txt_nama_customer"
+                    android:id="@+id/txt_namacust_jembe"
                     android:layout_below="@+id/text1"
                     android:layout_width="310dp"
+                    android:textSize="12sp"
                     android:layout_marginStart="20dp"
+                    android:textColor="@color/abumuda"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="15dp"
                     android:layout_height="40dp"
-
-                    android:paddingStart="18dp"
                     android:background="@drawable/backgroundtext"
-                    android:gravity=""
                     android:fontFamily="@font/poppins_medium"
-                    android:textSize="12sp"/>
+                    android:paddingRight="5dp"/>
 
             </LinearLayout>
 
@@ -100,20 +108,22 @@
                     android:text="No HP"
                     android:paddingStart="20dp"
                     android:textStyle="bold"
-                    android:fontFamily="@font/poppins_medium"
+                    android:fontFamily="@font/poppins_black"
                     android:textSize="14sp"/>
                 <TextView
+                    android:textSize="12sp"
                     android:id="@+id/txt_notelp"
                     android:layout_below="@+id/text1"
+                    android:textColor="@color/abumuda"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="15dp"
                     android:layout_width="310dp"
                     android:layout_marginStart="20dp"
                     android:layout_height="40dp"
-                    android:text="No HP"
-                    android:paddingStart="18dp"
                     android:background="@drawable/backgroundtext"
-                    android:gravity=""
-                    android:fontFamily="@font/poppins_medium"
-                    android:textSize="12sp"/>
+                    android:paddingRight="5dp"
+                    android:fontFamily="@font/poppins_medium" />
 
             </LinearLayout>
 
@@ -130,19 +140,22 @@
                     android:paddingStart="20dp"
                     android:textColor="@color/white"
                     android:textStyle="bold"
-                    android:fontFamily="@font/poppins_medium"/>
+                    android:fontFamily="@font/poppins_black"/>
 
                 <TextView
-                    android:id="@+id/txt_tanggal"
+                    android:textSize="12sp"
+                    android:paddingRight="5dp"
+                    android:id="@+id/txt_tanggal_jember"
                     android:layout_width="310dp"
                     android:layout_marginStart="20dp"
+                    android:textColor="@color/abumuda"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="15dp"
                     android:layout_height="40dp"
-                    android:text="Tanggal Acara"
-                    android:paddingStart="18dp"
                     android:background="@drawable/backgroundtext"
-                    android:gravity=""
                     android:fontFamily="@font/poppins_medium"
-                    android:textSize="12sp"/>
+                    />
 
             </LinearLayout>
 
@@ -159,19 +172,21 @@
                     android:paddingStart="20dp"
                     android:textColor="@color/white"
                     android:textStyle="bold"
-                    android:fontFamily="@font/poppins_medium"/>
+                    android:fontFamily="@font/poppins_black"/>
 
                 <TextView
-                    android:id="@+id/txt_alamat"
+                    android:textSize="12sp"
+                    android:paddingRight="5dp"
+                    android:id="@+id/txt_alamat_jember"
+                    android:textColor="@color/abumuda"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="15dp"
                     android:layout_width="310dp"
                     android:layout_marginStart="20dp"
                     android:layout_height="40dp"
-                    android:text="Alamat Acara"
-                    android:paddingStart="18dp"
                     android:background="@drawable/backgroundtext"
-                    android:gravity=""
-                    android:fontFamily="@font/poppins_medium"
-                    android:textSize="12sp"/>
+                    android:fontFamily="@font/poppins_medium" />
 
             </LinearLayout>
 
@@ -188,19 +203,20 @@
                     android:paddingStart="20dp"
                     android:textColor="@color/white"
                     android:textStyle="bold"
-                    android:fontFamily="@font/poppins_medium"/>
+                    android:fontFamily="@font/poppins_black"/>
 
                 <TextView
-                    android:id="@+id/txt_product"
+                    android:textColor="@color/abumuda"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="15dp"
+                    android:textSize="12sp"
+                    android:id="@+id/txt_product_jember"
                     android:layout_width="310dp"
                     android:layout_marginStart="20dp"
                     android:layout_height="40dp"
-                    android:text="Nama Package"
-                    android:paddingStart="18dp"
                     android:background="@drawable/backgroundtext"
-                    android:gravity=""
-                    android:fontFamily="@font/poppins_medium"
-                    android:textSize="12sp"/>
+                    android:fontFamily="@font/poppins_medium" />
 
             </LinearLayout>
 
@@ -217,19 +233,20 @@
                     android:paddingStart="20dp"
                     android:textColor="@color/white"
                     android:textStyle="bold"
-                    android:fontFamily="@font/poppins_medium"/>
+                    android:fontFamily="@font/poppins_black"/>
 
                 <TextView
-                    android:id="@+id/txt_nama_layout"
+                    android:textColor="@color/abumuda"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="15dp"
+                    android:textSize="12sp"
+                    android:id="@+id/txt_nama_layout_jember"
                     android:layout_width="310dp"
                     android:layout_marginStart="20dp"
                     android:layout_height="40dp"
-                    android:text="Nama Layout"
-                    android:paddingStart="18dp"
                     android:background="@drawable/backgroundtext"
-                    android:gravity=""
-                    android:fontFamily="@font/poppins_medium"
-                    android:textSize="12sp"/>
+                    android:fontFamily="@font/poppins_medium" />
             </LinearLayout>
 
                     <LinearLayout
@@ -246,19 +263,50 @@
                             android:paddingStart="20dp"
                             android:textColor="@color/white"
                             android:textStyle="bold"
-                            android:fontFamily="@font/poppins_medium"/>
+                            android:fontFamily="@font/poppins_black"/>
 
                         <TextView
-                            android:id="@+id/txt_qouta"
+                            android:textColor="@color/abumuda"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:id="@+id/txt_qouta_jember"
                             android:layout_width="310dp"
                             android:layout_marginStart="20dp"
                             android:layout_height="40dp"
-                            android:text="Qouta"
-                            android:paddingStart="18dp"
+                            android:textSize="12sp"
                             android:background="@drawable/backgroundtext"
                             android:gravity=""
-                            android:fontFamily="@font/poppins_medium"
-                            android:textSize="12sp"/>
+                            android:fontFamily="@font/poppins_medium" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:paddingTop="15dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Harga Qouta"
+                            android:paddingStart="20dp"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/poppins_black"/>
+
+                        <TextView
+                            android:textColor="@color/abumuda"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:textSize="12sp"
+                            android:id="@+id/txt_harga_qouta_jember"
+                            android:layout_width="310dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_height="40dp"
+                            android:paddingStart="18dp"
+                            android:background="@drawable/backgroundtext"
+                            android:fontFamily="@font/poppins_medium" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -274,19 +322,51 @@
                             android:paddingStart="20dp"
                             android:textColor="@color/white"
                             android:textStyle="bold"
-                            android:fontFamily="@font/poppins_medium"/>
+                            android:fontFamily="@font/poppins_black"/>
 
                         <TextView
-                            android:id="@+id/txt_unlimited"
+                            android:textColor="@color/abumuda"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:textSize="12sp"
+                            android:id="@+id/txt_unlimited_jember"
                             android:layout_width="310dp"
                             android:layout_marginStart="20dp"
                             android:layout_height="40dp"
-                            android:text="Unlimited"
                             android:paddingStart="18dp"
                             android:background="@drawable/backgroundtext"
-                            android:gravity=""
-                            android:fontFamily="@font/poppins_medium"
-                            android:textSize="12sp"/>
+                            android:fontFamily="@font/poppins_medium" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:paddingTop="15dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Harga Unlimited"
+                            android:paddingStart="20dp"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/poppins_black"/>
+
+                        <TextView
+                            android:textColor="@color/abumuda"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:textSize="12sp"
+                            android:id="@+id/txt_harga_unlimited"
+                            android:layout_width="310dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_height="40dp"
+                            android:paddingStart="18dp"
+                            android:background="@drawable/backgroundtext"
+                            android:fontFamily="@font/poppins_medium" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -302,18 +382,16 @@
                             android:paddingStart="20dp"
                             android:textColor="@color/white"
                             android:textStyle="bold"
-                            android:fontFamily="@font/poppins_medium"/>
+                            android:fontFamily="@font/poppins_black"/>
 
                         <ImageView
+                            android:scaleType="centerCrop"
                             android:id="@+id/txt_bukti_pembayaran"
-                            android:layout_width="310dp"
+                            android:layout_width="wrap_content"
                             android:layout_marginStart="20dp"
-                            android:layout_height="200dp"
+                            android:layout_height="wrap_content"
                             android:text="Bukti Pembayaran"
-                            android:paddingStart="18dp"
-                            android:gravity=""
-                            android:fontFamily="@font/poppins_medium"
-                            android:textSize="12sp"/>
+                            android:paddingStart="18dp"/>
                     </LinearLayout>
 
 
@@ -325,16 +403,32 @@
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Apakah Pesanan Ini Telah Selesai?"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:paddingTop="20dp"
+                android:fontFamily="@font/poppins_black"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="100dp">
 
         <Button
             android:id="@+id/btn_batal"
-            android:layout_marginTop="30dp"
             android:layout_marginStart="50dp"
             android:layout_width="140dp"
             android:backgroundTint="@color/merah"
             android:drawableEnd="@drawable/baseline_cancel_24"
-            android:text="Batal"
+            android:text="Belum"
             android:fontFamily="@font/poppins_black"
             android:textSize="15sp"
             android:textColor="@color/white"
@@ -351,7 +445,7 @@
             android:textSize="15sp"
             android:backgroundTint="@color/hijau"
             android:textColor="@color/white"
-            android:layout_marginTop="30dp"/>
+           />
 
         </LinearLayout>
 

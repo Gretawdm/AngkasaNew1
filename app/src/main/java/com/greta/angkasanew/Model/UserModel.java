@@ -1,33 +1,25 @@
 package com.greta.angkasanew.Model;
 
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
-
 import java.io.Serializable;
-import java.util.Base64;
 
-public class User implements Serializable {
+public class UserModel {
     private String nama_lengkap;
     private String email;
     private String no_hp;
     private String gender;
     private String password;
     private String jabatan;
-    private String image;
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public User(String nama_lengkap, String email, String no_hp, String gender, String password, String jabatan, byte[] image) {
+    public UserModel(String nama_lengkap, String email, String no_hp, String gender, String password, String jabatan) {
         this.nama_lengkap = nama_lengkap;
         this.email = email;
         this.no_hp = no_hp;
         this.gender = gender;
         this.password = password;
         this.jabatan = jabatan;
-        this.image = Base64.getEncoder().encodeToString(image);
     }
 
-    public User(String nama, String email, String noHp, String password, String gender) {
+    public UserModel(String nama, String email, String noHp, String password, String gender) {
     }
 
     public String getNama_lengkap() {
@@ -78,31 +70,4 @@ public class User implements Serializable {
         this.jabatan = jabatan;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public User(String nama_lengkap, String email, String no_hp, String gender, String password, String jabatan, String image) {
-        this.nama_lengkap = nama_lengkap;
-        this.email = email;
-        this.no_hp = no_hp;
-        this.gender = gender;
-        this.password = password;
-        this.jabatan = jabatan;
-        this.image = image;
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public byte[] getImageByte() {
-        return Base64.getDecoder().decode(image);
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public void setImageByte(byte[] imageData) {
-        this.image = Base64.getEncoder().encodeToString(imageData);
-    }
 }

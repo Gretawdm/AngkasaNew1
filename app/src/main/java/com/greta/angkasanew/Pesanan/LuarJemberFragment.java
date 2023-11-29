@@ -18,8 +18,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.greta.angkasanew.API.Api;
-import com.greta.angkasanew.Adapter.PemesananAdapter;
-import com.greta.angkasanew.Model.PemesananModel;
+import com.greta.angkasanew.Adapter.PemesananLuarJemberAdapter;
+import com.greta.angkasanew.Model.PemesananLuarJemberModel;
 import com.greta.angkasanew.R;
 
 import org.json.JSONArray;
@@ -36,11 +36,11 @@ import java.util.ArrayList;
 public class LuarJemberFragment extends Fragment {
     private RequestQueue requestQueue;
     private View rootView;
-    private ArrayList<PemesananModel> pemesananModelArrayList;
+    private ArrayList<PemesananLuarJemberModel> pemesananLuarJemberModelArrayList;
     private String[] nama_package;
     private String[] nama_cust;
     private RecyclerView recyclerview;
-    private PemesananAdapter pemesananAdapter;
+    private PemesananLuarJemberAdapter pemesananLuarJemberAdapter;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -92,7 +92,7 @@ public class LuarJemberFragment extends Fragment {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext()); //menyusun item
         recyclerview.setLayoutManager(layoutManager); //mengontrol tata letak
 
-        pemesananModelArrayList = new ArrayList<>();
+        pemesananLuarJemberModelArrayList = new ArrayList<>();
         if (getContext() != null) {
             requestQueue = Volley.newRequestQueue(getContext());
             perseJSON(); //panggil method JSON
@@ -121,14 +121,13 @@ public class LuarJemberFragment extends Fragment {
                                 String nama_layout = hit.getString("nama_layout");
                                 String quota = hit.getString("nama_quota");
                                 String unlimited = hit.getString("nama_unlimited");
-                                String bukti_bayar = hit.getString("bukti_bayar");
                                 String alamat = hit.getString("alamat_acara");
 
-                                pemesananModelArrayList.add(new PemesananModel( nama_cust,nama_package, tanggal, id,no_hp,nama_layout,alamat,quota,unlimited,bukti_bayar));
+                                pemesananLuarJemberModelArrayList.add(new PemesananLuarJemberModel( nama_cust,nama_package, tanggal, id,no_hp,nama_layout,alamat,quota,unlimited));
                             }
 
-                            pemesananAdapter = new PemesananAdapter(getContext(), pemesananModelArrayList);
-                            recyclerview.setAdapter(pemesananAdapter);
+                            pemesananLuarJemberAdapter = new PemesananLuarJemberAdapter(getContext(), pemesananLuarJemberModelArrayList);
+                            recyclerview.setAdapter(pemesananLuarJemberAdapter);
 
                         } catch (JSONException e) {
                             e.printStackTrace();

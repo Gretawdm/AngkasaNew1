@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -18,8 +19,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.greta.angkasanew.API.Api;
-import com.greta.angkasanew.Adapter.PemesananAdapter;
-import com.greta.angkasanew.Model.PemesananModel;
+import com.greta.angkasanew.Adapter.PemesananSponsorAdapter;
+import com.greta.angkasanew.Model.PemesananSponsorModel;
 import com.greta.angkasanew.R;
 
 import org.json.JSONArray;
@@ -36,11 +37,9 @@ import java.util.ArrayList;
 public class SponsorFragment extends Fragment {
     private RequestQueue requestQueue;
     private View rootView;
-    private ArrayList<PemesananModel> pemesananModelArrayList;
-    private String[] nama_package;
-    private String[] nama_cust;
+    private ArrayList<PemesananSponsorModel> pemesananSponsorModelArrayList;
     private RecyclerView recyclerview;
-    private PemesananAdapter pemesananAdapter;
+    private PemesananSponsorAdapter pemesananSponsorAdapter;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -91,7 +90,7 @@ public class SponsorFragment extends Fragment {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext()); //menyusun item
         recyclerview.setLayoutManager(layoutManager); //mengontrol tata letak
 
-        pemesananModelArrayList = new ArrayList<>();
+        pemesananSponsorModelArrayList = new ArrayList<>();
         if (getContext() != null) {
             requestQueue = Volley.newRequestQueue(getContext());
             perseJSON(); //panggil method JSON
@@ -111,23 +110,19 @@ public class SponsorFragment extends Fragment {
 
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject hit = jsonArray.getJSONObject(i);
-
-                                String nama_package = hit.getString("nama_package");
-                                String nama_cust = hit.getString("nama_cust");
+                                String namacustomer = hit.getString("nama_cust");
                                 String tanggal = hit.getString("tanggal_acara");
-                                String id = hit.getString("id_pemesanan");
+                                String id_pemesanan = hit.getString("id_pemesanan");
                                 String no_hp = hit.getString("no_hp");
-                                String nama_layout = hit.getString("nama_layout");
-                                String quota = hit.getString("nama_quota");
-                                String unlimited = hit.getString("nama_unlimited");
-                                String bukti_bayar = hit.getString("bukti_bayar");
                                 String alamat = hit.getString("alamat_acara");
+                                String proposal = hit.getString("proposal");
+                                Log.w ("test",tanggal);
 
-                                pemesananModelArrayList.add(new PemesananModel( nama_cust,nama_package, tanggal, id,no_hp,nama_layout,alamat,quota,unlimited,bukti_bayar));
+                                pemesananSponsorModelArrayList.add(new PemesananSponsorModel(namacustomer,tanggal,id_pemesanan,no_hp,alamat,proposal));
                             }
 
-                            pemesananAdapter = new PemesananAdapter(getContext(), pemesananModelArrayList);
-                            recyclerview.setAdapter(pemesananAdapter);
+                            pemesananSponsorAdapter = new PemesananSponsorAdapter(getContext(), pemesananSponsorModelArrayList);
+                            recyclerview.setAdapter(pemesananSponsorAdapter);
 
                         } catch (JSONException e) {
                             e.printStackTrace();

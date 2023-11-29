@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Pesanan.SponsorFragment">
+    tools:context=".Pesanan.PromoFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
@@ -12,10 +12,10 @@
         android:layout_marginTop="10dp"
         android:orientation="vertical">
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/ryclepromo"
+            android:id="@+id/ryclepemesananpromo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/list" />
+            tools:listitem="@layout/listpromo" />
     </LinearLayout>
 
 </FrameLayout>

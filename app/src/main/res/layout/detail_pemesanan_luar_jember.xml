@@ -2,7 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/bgactivity"
+    tools:context=".Pesanan.DetailPemesananLuarJember"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -37,10 +39,11 @@
             android:layout_height="580dp"
             app:cardCornerRadius="20dp"
             app:cardElevation="20dp"
-            app:cardBackgroundColor="@color/abuabu"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginTop="20dp">
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="20dp"
+            app:cardBackgroundColor="@color/abuabu">
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -73,10 +76,14 @@
                         <TextView
                             android:layout_below="@+id/text1"
                             android:layout_width="310dp"
+                            android:id="@+id/txt_namacust"
                             android:layout_marginStart="20dp"
                             android:layout_height="40dp"
+                            android:textColor="@color/abumuda"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
                             android:text="Nama Customer"
-                            android:paddingStart="18dp"
                             android:background="@drawable/backgroundtext"
                             android:gravity=""
                             android:fontFamily="@font/poppins_medium"
@@ -103,8 +110,13 @@
                         <TextView
                             android:layout_below="@+id/text1"
                             android:layout_width="310dp"
+                            android:id="@+id/txt_nohp"
                             android:layout_marginStart="20dp"
                             android:layout_height="40dp"
+                            android:textColor="@color/abumuda"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
                             android:text="No HP"
                             android:paddingStart="18dp"
                             android:background="@drawable/backgroundtext"
@@ -130,11 +142,16 @@
                             android:fontFamily="@font/poppins_medium"/>
 
                         <TextView
+                            android:id="@+id/txt_tanggal_luar"
                             android:layout_width="310dp"
                             android:layout_marginStart="20dp"
                             android:layout_height="40dp"
                             android:text="Tanggal Acara"
                             android:paddingStart="18dp"
+                            android:textColor="@color/abumuda"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
                             android:background="@drawable/backgroundtext"
                             android:gravity=""
                             android:fontFamily="@font/poppins_medium"
@@ -162,7 +179,11 @@
                             android:layout_marginStart="20dp"
                             android:layout_height="40dp"
                             android:text="Alamat Acara"
-                            android:paddingStart="18dp"
+                            android:textColor="@color/abumuda"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:id="@+id/txt_alamat"
                             android:background="@drawable/backgroundtext"
                             android:gravity=""
                             android:fontFamily="@font/poppins_medium"
@@ -190,9 +211,12 @@
                             android:layout_marginStart="20dp"
                             android:layout_height="40dp"
                             android:text="Nama Package"
-                            android:paddingStart="18dp"
+                            android:id="@+id/txt_package"
+                            android:textColor="@color/abumuda"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
                             android:background="@drawable/backgroundtext"
-                            android:gravity=""
                             android:fontFamily="@font/poppins_medium"
                             android:textSize="12sp"/>
 
@@ -218,9 +242,12 @@
                             android:layout_marginStart="20dp"
                             android:layout_height="40dp"
                             android:text="Nama Layout"
-                            android:paddingStart="18dp"
                             android:background="@drawable/backgroundtext"
-                            android:gravity=""
+                            android:textColor="@color/abumuda"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:id="@+id/txt_layout"
+                            android:paddingLeft="15dp"
                             android:fontFamily="@font/poppins_medium"
                             android:textSize="12sp"/>
                     </LinearLayout>
@@ -246,9 +273,12 @@
                             android:layout_marginStart="20dp"
                             android:layout_height="40dp"
                             android:text="Qouta"
-                            android:paddingStart="18dp"
+                            android:id="@+id/txt_qouta"
+                            android:textColor="@color/abumuda"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
                             android:background="@drawable/backgroundtext"
-                            android:gravity=""
                             android:fontFamily="@font/poppins_medium"
                             android:textSize="12sp"/>
                     </LinearLayout>
@@ -269,13 +299,17 @@
                             android:fontFamily="@font/poppins_medium"/>
 
                         <TextView
+                            android:id="@+id/txt_unlimited"
                             android:layout_width="310dp"
                             android:layout_marginStart="20dp"
                             android:layout_height="40dp"
                             android:text="Unlimited"
-                            android:paddingStart="18dp"
+                            android:textColor="@color/abumuda"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
                             android:background="@drawable/backgroundtext"
-                            android:gravity=""
+                            android:layout_marginBottom="20dp"
                             android:fontFamily="@font/poppins_medium"
                             android:textSize="12sp"/>
                     </LinearLayout>
@@ -289,16 +323,31 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp">
+            android:layout_height="50dp">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Apakah Pesanan Ini Telah Selesai?"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:paddingTop="20dp"
+                android:fontFamily="@font/poppins_black"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
             <Button
                 android:id="@+id/btn_batal"
-                android:layout_marginTop="30dp"
                 android:layout_marginStart="50dp"
                 android:layout_width="140dp"
                 android:backgroundTint="@color/merah"
                 android:drawableEnd="@drawable/baseline_cancel_24"
-                android:text="Batal"
+                android:text="Belum"
                 android:fontFamily="@font/poppins_black"
                 android:textSize="15sp"
                 android:textColor="@color/white"
@@ -314,8 +363,7 @@
                 android:fontFamily="@font/poppins_black"
                 android:textSize="15sp"
                 android:backgroundTint="@color/hijau"
-                android:textColor="@color/white"
-                android:layout_marginTop="30dp"/>
+                android:textColor="@color/white" />
 
         </LinearLayout>
 

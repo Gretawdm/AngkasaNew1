@@ -43,6 +43,7 @@ dependencies {
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("com.makeramen:roundedimageview:2.3.0")
     implementation("com.github.bumptech.glide:glide:4.16.0")//buat glide
+    implementation("androidx.transition:transition:1.4.1")
 
 
     implementation("androidx.appcompat:appcompat:1.6.1")

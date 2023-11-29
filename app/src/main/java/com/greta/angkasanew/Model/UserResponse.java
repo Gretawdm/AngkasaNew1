@@ -1,14 +1,12 @@
 package com.greta.angkasanew.Model;
 
-import com.greta.angkasanew.Model.User;
-
 import java.util.List;
 
 public class UserResponse {
 
     private int code;
     private String status;
-    private List<User> user_list;
+    private List<UserModel> user_list;
 
     public int getCode() {
         return code;
@@ -26,11 +24,11 @@ public class UserResponse {
         this.status = status;
     }
 
-    public List<User> getUser_list() {
+    public List<UserModel> getUser_list() {
         return user_list;
     }
 
-    public void setUser_list(List<User> user_list) {
+    public void setUser_list(List<UserModel> user_list) {
         this.user_list = user_list;
     }
 }

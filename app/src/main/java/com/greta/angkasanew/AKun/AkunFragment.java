@@ -4,14 +4,33 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethod;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.greta.angkasanew.API.Api;
 import com.greta.angkasanew.R;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,7 +38,10 @@ import com.greta.angkasanew.R;
  * create an instance of this fragment.
  */
 public class AkunFragment extends Fragment {
-    TextView txtnama_lengkap, txt_email, txt_notelp;
+    EditText txtnama_lengkap, txt_email, txt_notelp;
+    TextView gender,jabatan,id;
+    Button btn_simpan;
+
     private View view;
     private SharedPreferences preferences;
 
@@ -89,8 +111,56 @@ public class AkunFragment extends Fragment {
         txtnama_lengkap = view.findViewById(R.id.txtNamaLengkap);
         txt_email = view.findViewById(R.id.txtEmail);
         txt_notelp = view.findViewById(R.id.txtNoTelp);
+        gender = view.findViewById(R.id.txtJenis_Kelamin);
+        jabatan = view.findViewById(R.id.txtJabatan);
+        id = view.findViewById(R.id.id_user);
+        btn_simpan = view.findViewById(R.id.btn_simpan);
+
+        btn_simpan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                update();
+            }
+        });
+
+        txtnama_lengkap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtnama_lengkap.setFocusable(true);
+                txtnama_lengkap.setFocusableInTouchMode(true);
+                txtnama_lengkap.requestFocus();
+
+                showKeyboard(requireContext(), txtnama_lengkap);
+            }
+        });
+
+        txt_email.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txt_email.setFocusable(true);
+                txt_email.setFocusableInTouchMode(true);
+                txt_email.requestFocus();
+
+                showKeyboard(requireContext(), txt_email);
+            }
+        });
+
+        txt_notelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txt_notelp.setFocusable(true);
+                txt_notelp.setFocusableInTouchMode(true);
+                txt_notelp.requestFocus();
+
+                showKeyboard(requireContext(), txt_notelp);
+            }
+        });
+
 
         preferences = getContext().getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
+
+        String idprofil = preferences.getString("id_user", "-");
+        id.setText(idprofil);
 
         String namaprofil = preferences.getString("nama_lengkap", "-");
         txtnama_lengkap.setText(namaprofil);
@@ -100,6 +170,107 @@ public class AkunFragment extends Fragment {
 
         String notelpprofil = preferences.getString("no_hp", "-");
         txt_notelp.setText(notelpprofil);
+
+        String genderprofil = preferences.getString("jenis_kelamin", "-");
+        gender.setText(genderprofil);
+
+        String jabatanprofil = preferences.getString("jabatan", "-");
+        jabatan.setText(jabatanprofil);
+
+
+
+      /*  String id_akun = preferences.getString("id_user", "-");
+        id.setText(id_akun);*/
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        // Panggil initprofile() atau metode lain yang sesuai untuk memperbarui tampilan
+        initprofile();
+    }
+
+    private void showKeyboard(Context context, View view) {
+        InputMethodManager inputMethodManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (inputMethodManager != null) {
+            inputMethodManager.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
+        }
+    }
+
+    private void update(){
+        StringRequest request = new StringRequest(Request.Method.POST, Api.urlUpdateAkun, response -> {
+            try {
+                //ini ngambil data
+                JSONObject jsonObject = new JSONObject(response);
+                /*Log.d("JSON Response", response);*/
+                /*if (jsonObject.has("jenis-kelamin")) {
+                    String jenisKelamin = jsonObject.getString("jenis-kelamin");
+                    // Lakukan sesuatu dengan jenisKelamin
+                } else {
+                    // Tangani kasus di mana kunci 'jenis-kelamin' tidak ditemukan
+                    Log.e("JSON Parsing", "Key 'jenis-kelamin' not found in JSON");
+                }*/
+
+                int code = jsonObject.getInt("code");
+                String status = jsonObject.getString("status");
+
+                if (code == 200 && status.equals("Sukses")) {
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("no_hp", txt_notelp.getText().toString().trim());
+                    editor.putString("email", txt_email.getText().toString().trim());
+                    editor.apply();
+
+                    //mengatur agar berubah
+                    String notelpprofilAfterUpdate = preferences.getString("no_hp", "-");
+                    Log.d("DEBUG", "No. Telp setelah perubahan: " + notelpprofilAfterUpdate);
+
+                    String emailpprofilAfterUpdate = preferences.getString("email", "-");
+                    Log.d("DEBUG", "Email  setelah perubahan: " + emailpprofilAfterUpdate);
+
+
+                    Toast.makeText(getActivity(), "Berhasil di ubah", Toast.LENGTH_SHORT).show();
+                    txt_notelp.setText(txt_notelp.getText().toString().trim());
+
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            // Update TextView di sini
+                            txt_notelp.setText(txt_notelp.getText().toString().trim());
+                            txt_email.setText(txt_email.getText().toString().trim());
+                        }
+                    });
+
+                    /*initprofile();*/
+                  /*  Intent intent = new Intent(DetailDiskon.this, MainActivity.class);
+                    startActivity(intent);*/
+                }else{
+                    Toast.makeText(getActivity(), "Gagal", Toast.LENGTH_SHORT).show();
+
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+                Toast.makeText(getActivity(), "JSON ERROR:" + response, Toast.LENGTH_SHORT).show();
+            }
+        }, error -> {
+            error.printStackTrace();
+            Toast.makeText(getActivity(), "Network Error", Toast.LENGTH_SHORT).show();
+        }) {
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> map = new HashMap<>();
+                map.put("id_user", id.getText().toString().trim());
+                map.put("nama_lengkap", txtnama_lengkap.getText().toString().trim());
+                map.put("email", txt_email.getText().toString().trim());
+                map.put("no_hp", txt_notelp.getText().toString().trim());
+                map.put("jenis_kelamin", gender.getText().toString().trim());
+                /*map.put("status", "Selesai");
+                map.put("id_pemesanan", id_pemesanan.getText().toString().trim());*/
+                return map;
+            }
+        };
+        RequestQueue queue = Volley.newRequestQueue(requireActivity());
+        queue.add(request);
     }
 }
 

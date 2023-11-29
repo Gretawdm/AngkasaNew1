@@ -17,6 +17,7 @@ import com.greta.angkasanew.AKun.AkunFragment;
 import com.greta.angkasanew.Home.HomeFragment;
 import com.greta.angkasanew.Pesanan.Pesanan_Masuk_Fragment;
 import com.greta.angkasanew.R;
+import com.greta.angkasanew.Diskon.DiskonFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -55,9 +56,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
 
 
         private void getfragment(Fragment fragment){
