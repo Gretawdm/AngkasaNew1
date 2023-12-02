@@ -3,18 +3,28 @@ package com.greta.angkasanew.Model;
 public class PemesananSponsorModel {
     private String namacustomer;
     private String tanggal;
+    private String status;
     private String id_pemesanan;
     private String no_hp;
     private String alamat;
     private String proposal;
 
-    public PemesananSponsorModel(String namacustomer, String tanggal, String id_pemesanan, String no_hp, String alamat, String proposal) {
+    public PemesananSponsorModel(String namacustomer, String tanggal, String status, String id_pemesanan, String no_hp, String alamat, String proposal) {
         this.namacustomer = namacustomer;
         this.tanggal = tanggal;
+        this.status = status;
         this.id_pemesanan = id_pemesanan;
         this.no_hp = no_hp;
         this.alamat = alamat;
         this.proposal = proposal;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getNamacustomer() {

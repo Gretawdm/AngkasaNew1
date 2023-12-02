@@ -100,7 +100,7 @@ public class LuarJemberFragment extends Fragment {
             Toast.makeText(getContext(), "Konteks Null", Toast.LENGTH_SHORT).show();
         }
         return rootView;
-}
+    }
     private void perseJSON(){
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, Api.urlPemesananLuarJember, null,
@@ -116,6 +116,7 @@ public class LuarJemberFragment extends Fragment {
                                 String nama_package = hit.getString("nama_package");
                                 String nama_cust = hit.getString("nama_cust");
                                 String tanggal = hit.getString("tanggal_acara");
+                                String Status = hit.getString("status");
                                 String id = hit.getString("id_pemesanan");
                                 String no_hp = hit.getString("no_hp");
                                 String nama_layout = hit.getString("nama_layout");
@@ -123,7 +124,7 @@ public class LuarJemberFragment extends Fragment {
                                 String unlimited = hit.getString("nama_unlimited");
                                 String alamat = hit.getString("alamat_acara");
 
-                                pemesananLuarJemberModelArrayList.add(new PemesananLuarJemberModel( nama_cust,nama_package, tanggal, id,no_hp,nama_layout,alamat,quota,unlimited));
+                                pemesananLuarJemberModelArrayList.add(new PemesananLuarJemberModel( nama_cust,nama_package,tanggal,Status,id,no_hp,nama_layout,alamat,quota,unlimited));
                             }
 
                             pemesananLuarJemberAdapter = new PemesananLuarJemberAdapter(getContext(), pemesananLuarJemberModelArrayList);

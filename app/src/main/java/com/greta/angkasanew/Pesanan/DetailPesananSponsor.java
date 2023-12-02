@@ -15,15 +15,22 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.greta.angkasanew.API.Api;
+import com.greta.angkasanew.Adapter.PemesananJemberAdapter;
+import com.greta.angkasanew.Adapter.PemesananSponsorAdapter;
+import com.greta.angkasanew.Model.PemesananJemberModel;
+import com.greta.angkasanew.Model.PemesananSponsorModel;
 import com.greta.angkasanew.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class DetailPesananSponsor extends AppCompatActivity {
+    private static ArrayList<PemesananSponsorModel> pemesananSponsorArrayList;
+    private PemesananSponsorAdapter pemesananSponsorAdapter;
     TextView nama_cust,no_hp,tanggal_acara,alamat_acara,proposal_acara,id_sponsor;
     Button btn_selesai;
 
@@ -76,15 +83,21 @@ public class DetailPesananSponsor extends AppCompatActivity {
 
                 int code = jsonObject.getInt("code");
                 String status = jsonObject.getString("status");
+                TextView konfirmasi = findViewById(R.id.txt_status_sponsor);
 
                 if (code == 200 && status.equals("Sukses")) {
+                    int positionToUpdate = findItemPositionById(id_sponsor.getText().toString().trim());
 
-                    Toast.makeText(getApplicationContext(), "Pesanan Telah Selesai Dilakukan", Toast.LENGTH_SHORT).show();
-                  /*  Intent intent = new Intent(DetailDiskon.this, MainActivity.class);
-                    startActivity(intent);*/
-                }else{
+                    if (positionToUpdate != -1) {
+                        PemesananSponsorModel selectedItem = pemesananSponsorArrayList.get(positionToUpdate);
+                        selectedItem.setStatus("Selesai");
+                        pemesananSponsorAdapter.notifyDataSetChanged();
+                        Toast.makeText(getApplicationContext(), "Pesanan Telah Selesai", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Item Not Found", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
                     Toast.makeText(getApplicationContext(), "Gagal", Toast.LENGTH_SHORT).show();
-
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -106,6 +119,15 @@ public class DetailPesananSponsor extends AppCompatActivity {
         };
         RequestQueue queue = Volley.newRequestQueue(this);
         queue.add(request);
+    }
+    private int findItemPositionById(String itemId) {
+        for (int i = 0; i < pemesananSponsorArrayList.size(); i++) {
+            PemesananSponsorModel item = pemesananSponsorArrayList.get(i);
+            if (item.getId_pemesanan().equals(itemId)) {
+                return i; // Found the item, return its position
+            }
+        }
+        return -1; // Item not found
     }
 
 }

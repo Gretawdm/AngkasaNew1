@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.greta.angkasanew.Model.PemesananJemberModel;
@@ -39,8 +40,13 @@ public class PemesananJemberAdapter extends RecyclerView.Adapter<PemesananJember
         holder.PackageName.setText(pemesananJemberModel.getNamapackage());
         holder.PemesanName.setText(pemesananJemberModel.getNamacustomer());
         holder.tanggalPemesanan.setText(pemesananJemberModel.getTanggal());
+        holder.status.setText(pemesananJemberModel.getStatus());
 
-
+        if("Selesai".equals(pemesananJemberModel.getStatus())) {
+            holder.status.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.hijau));
+        }else {
+            holder.status.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.merah));
+        }
     }
 
     @Override
@@ -52,6 +58,7 @@ public class PemesananJemberAdapter extends RecyclerView.Adapter<PemesananJember
         TextView PackageName;
         TextView PemesanName;
         TextView tanggalPemesanan;
+        TextView status;
 
         public PemesananJemberViewHolder(@NonNull View itemView){
             super(itemView);
@@ -60,6 +67,7 @@ public class PemesananJemberAdapter extends RecyclerView.Adapter<PemesananJember
             PackageName = itemView.findViewById(R.id.txt_product_jember);
             PemesanName = itemView.findViewById(R.id.txt_nama_customer_jember);
             tanggalPemesanan = itemView.findViewById(R.id.txt_tanggal_jember);
+            status = itemView.findViewById(R.id.txt_status_jember);
 
             //menambahkan listener klik pada itemview
             itemView.setOnClickListener(this);
@@ -79,6 +87,7 @@ public class PemesananJemberAdapter extends RecyclerView.Adapter<PemesananJember
             intent.putExtra("hargaqouta", pemesananJemberModelArrayList.get(position).getHarga_qouta());
             intent.putExtra("hargaunlimited", pemesananJemberModelArrayList.get(position).getHarga_unlimited());
             intent.putExtra("bukti_bayar", pemesananJemberModelArrayList.get(position).getBukti_pembayaran());
+            intent.putExtra("id", pemesananJemberModelArrayList.get(position).getId_pemesanan());
             context.startActivity(intent);
 
         }

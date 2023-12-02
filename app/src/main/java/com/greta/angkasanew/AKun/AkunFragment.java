@@ -190,12 +190,12 @@ public class AkunFragment extends Fragment {
         initprofile();
     }
 
-    private void showKeyboard(Context context, View view) {
-        InputMethodManager inputMethodManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
-        if (inputMethodManager != null) {
-            inputMethodManager.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
+        private void showKeyboard(Context context, View view) {
+            InputMethodManager inputMethodManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (inputMethodManager != null) {
+                inputMethodManager.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
+            }
         }
-    }
 
     private void update(){
         StringRequest request = new StringRequest(Request.Method.POST, Api.urlUpdateAkun, response -> {
@@ -203,14 +203,6 @@ public class AkunFragment extends Fragment {
                 //ini ngambil data
                 JSONObject jsonObject = new JSONObject(response);
                 /*Log.d("JSON Response", response);*/
-                /*if (jsonObject.has("jenis-kelamin")) {
-                    String jenisKelamin = jsonObject.getString("jenis-kelamin");
-                    // Lakukan sesuatu dengan jenisKelamin
-                } else {
-                    // Tangani kasus di mana kunci 'jenis-kelamin' tidak ditemukan
-                    Log.e("JSON Parsing", "Key 'jenis-kelamin' not found in JSON");
-                }*/
-
                 int code = jsonObject.getInt("code");
                 String status = jsonObject.getString("status");
 
@@ -218,6 +210,7 @@ public class AkunFragment extends Fragment {
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putString("no_hp", txt_notelp.getText().toString().trim());
                     editor.putString("email", txt_email.getText().toString().trim());
+                    editor.putString("nama_lengkap", txtnama_lengkap.getText().toString().trim());
                     editor.apply();
 
                     //mengatur agar berubah
@@ -226,6 +219,9 @@ public class AkunFragment extends Fragment {
 
                     String emailpprofilAfterUpdate = preferences.getString("email", "-");
                     Log.d("DEBUG", "Email  setelah perubahan: " + emailpprofilAfterUpdate);
+
+                    String namalengkapprofilAfterUpdate = preferences.getString("nama_lengkap", "-");
+                    Log.d("DEBUG", "Email  setelah perubahan: " + namalengkapprofilAfterUpdate);
 
 
                     Toast.makeText(getActivity(), "Berhasil di ubah", Toast.LENGTH_SHORT).show();
@@ -237,10 +233,9 @@ public class AkunFragment extends Fragment {
                             // Update TextView di sini
                             txt_notelp.setText(txt_notelp.getText().toString().trim());
                             txt_email.setText(txt_email.getText().toString().trim());
+                           /* txtnama_lengkap.setText(txtnama_lengkap.getText().toString().);*/
                         }
                     });
-
-                    /*initprofile();*/
                   /*  Intent intent = new Intent(DetailDiskon.this, MainActivity.class);
                     startActivity(intent);*/
                 }else{

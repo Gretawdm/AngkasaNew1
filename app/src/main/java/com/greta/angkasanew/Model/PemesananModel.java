@@ -4,6 +4,7 @@ public class PemesananModel {
     private String namacustomer;
     private String namapackage;
     private String tanggal;
+    private String status;
     private String id_pemesanan;
     private String no_hp;
     private String nama_layout;
@@ -12,10 +13,11 @@ public class PemesananModel {
     private String unlimited;
     String bukti_pembayaran;
 
-    public PemesananModel(String namacustomer, String namapackage, String tanggal, String id_pemesanan, String no_hp, String nama_layout, String alamat, String quota, String unlimited, String bukti_pembayaran) {
+    public PemesananModel(String namacustomer, String namapackage, String tanggal, String status, String id_pemesanan, String no_hp, String nama_layout, String alamat, String quota, String unlimited, String bukti_pembayaran) {
         this.namacustomer = namacustomer;
         this.namapackage = namapackage;
         this.tanggal = tanggal;
+        this.status = status;
         this.id_pemesanan = id_pemesanan;
         this.no_hp = no_hp;
         this.nama_layout = nama_layout;
@@ -23,6 +25,14 @@ public class PemesananModel {
         this.quota = quota;
         this.unlimited = unlimited;
         this.bukti_pembayaran = bukti_pembayaran;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getAlamat() {

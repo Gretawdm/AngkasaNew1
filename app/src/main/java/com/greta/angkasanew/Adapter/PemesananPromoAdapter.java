@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import com.greta.angkasanew.Adapter.PemesananPromoAdapter;
 
@@ -43,8 +44,14 @@ public class PemesananPromoAdapter extends RecyclerView.Adapter<PemesananPromoAd
         holder.Nama_Cust.setText(pemesananPromoModel.getNama_cust());
         holder.Judul_Promo.setText(pemesananPromoModel.getJudul_promo());
         holder.status.setText(pemesananPromoModel.getStatus());
-      /*  holder.status.setText(pemesananPromoModel.getStatus());*/
-        Log.w("test",pemesananPromoModel.getStatus());
+
+        if("Selesai".equals(pemesananPromoModel.getStatus())) {
+            holder.status.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.hijau));
+        }else {
+            holder.status.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.merah));
+        }
+        /*  holder.status.setText(pemesananPromoModel.getStatus());*/
+       /* Log.w("test",pemesananPromoModel.getStatus());*/
     }
     @Override
     public int getItemCount() {
@@ -69,7 +76,7 @@ public class PemesananPromoAdapter extends RecyclerView.Adapter<PemesananPromoAd
         public void onClick(View v) {
             int position = getAdapterPosition();
             Intent intent = new Intent(context, DetailPesanananPromo.class);
-           /* Log.w("myApp", pemesananPromoModelArrayList.get(position).getId_pemesanan());*/
+            /* Log.w("myApp", pemesananPromoModelArrayList.get(position).getId_pemesanan());*/
             intent.putExtra("judul_promo", pemesananPromoModelArrayList.get(position).getJudul_promo());
             intent.putExtra("nama_promo", pemesananPromoModelArrayList.get(position).getNama_promo());
             intent.putExtra("nama_cust", pemesananPromoModelArrayList.get(position).getNama_cust());

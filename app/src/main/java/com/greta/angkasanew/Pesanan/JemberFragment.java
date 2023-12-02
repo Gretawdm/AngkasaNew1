@@ -117,6 +117,7 @@ public class JemberFragment extends Fragment {
                                 String nama_package = hit.getString("nama_package");
                                 String nama_cust = hit.getString("nama_cust");
                                 String tanggal = hit.getString("tanggal_acara");
+                                String Status = hit.getString("status");
                                 String id = hit.getString("id_pemesanan");
                                 String no_hp = hit.getString("no_hp");
                                 String nama_layout = hit.getString("nama_layout");
@@ -127,7 +128,7 @@ public class JemberFragment extends Fragment {
                                 String alamat = hit.getString("alamat_acara");
                                 String bukti_bayar = hit.getString("bukti_bayar");
                               /*  Log.w("test",harga_qouta);*/
-                                pemesananJemberModelArrayList.add(new PemesananJemberModel( nama_cust,nama_package, tanggal, id,no_hp,nama_layout,alamat,quota,unlimited,harga_qouta,harga_unlimited,bukti_bayar));
+                                pemesananJemberModelArrayList.add(new PemesananJemberModel( nama_cust,nama_package,tanggal,Status,id,no_hp,nama_layout,alamat,quota,unlimited,harga_qouta,harga_unlimited,bukti_bayar));
                             }
 
                             pemesananJemberAdapter = new PemesananJemberAdapter(getContext(), pemesananJemberModelArrayList);

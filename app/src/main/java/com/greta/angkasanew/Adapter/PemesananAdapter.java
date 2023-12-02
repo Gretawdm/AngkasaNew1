@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.greta.angkasanew.Model.PemesananModel;
@@ -40,6 +41,13 @@ public class PemesananAdapter extends RecyclerView.Adapter<PemesananAdapter.Peme
         holder.PackageName.setText(pemesananModel.getNamapackage());
         holder.PemesanName.setText(pemesananModel.getNamacustomer());
         holder.tanggalPemesanan.setText(pemesananModel.getTanggal());
+        holder.status.setText(pemesananModel.getStatus());
+
+        if("Selesai".equals(pemesananModel.getStatus())) {
+            holder.status.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.hijau));
+        }else {
+            holder.status.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.merah));
+        }
 
     }
 
@@ -52,6 +60,7 @@ public class PemesananAdapter extends RecyclerView.Adapter<PemesananAdapter.Peme
         TextView PackageName;
         TextView PemesanName;
         TextView tanggalPemesanan;
+        TextView status;
 
         public PemesananViewHolder(@NonNull View itemView){
             super(itemView);
@@ -59,6 +68,8 @@ public class PemesananAdapter extends RecyclerView.Adapter<PemesananAdapter.Peme
             PackageName = itemView.findViewById(R.id.txt_product);
             PemesanName = itemView.findViewById(R.id.txt_nama_customer);
             tanggalPemesanan = itemView.findViewById(R.id.txt_tanggal);
+            status = itemView.findViewById(R.id.txt_status);
+
 
             //menambahkan listener klik pada itemview
            /* itemView.setOnClickListener(this);*/

@@ -14,7 +14,6 @@
         android:gravity="center"
         android:orientation="vertical">
         <TextView
-            android:drawableStart="@drawable/baseline_keyboard_backspace_24"
             android:id="@+id/header"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
@@ -88,6 +87,12 @@
                             android:gravity=""
                             android:fontFamily="@font/poppins_medium"
                             android:textSize="12sp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
+                            android:id="@+id/id_pemesanan_luarjember"/>
+
 
                     </LinearLayout>
 
@@ -354,7 +359,7 @@
                 android:layout_height="50dp" />
 
             <Button
-                android:id="@+id/btn_selesai"
+                android:id="@+id/btn_selesai_luar_jember"
                 android:layout_width="140dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="30dp"

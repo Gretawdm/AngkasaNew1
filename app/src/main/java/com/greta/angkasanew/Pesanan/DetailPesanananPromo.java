@@ -35,41 +35,41 @@ public class DetailPesanananPromo extends AppCompatActivity {
 
         setContentView(R.layout.activity_detail_pesananan_promo);
 
-    judul_promo = findViewById(R.id.txt_judulpromo);
-    nama_promo = findViewById(R.id.txt_namapromo);
-    nama_cust = findViewById(R.id.txt_namacust);
-    no_hp = findViewById(R.id.txt_no_hppromo);
-    alamat_acara = findViewById(R.id.txt_alamatpromo);
-    harga = findViewById(R.id.txt_hargapromo);
-    id_promo = findViewById(R.id.id_pemesanan);
+        judul_promo = findViewById(R.id.txt_judulpromo);
+        nama_promo = findViewById(R.id.txt_namapromo);
+        nama_cust = findViewById(R.id.txt_namacust);
+        no_hp = findViewById(R.id.txt_no_hppromo);
+        alamat_acara = findViewById(R.id.txt_alamatpromo);
+        harga = findViewById(R.id.txt_hargapromo);
+        id_promo = findViewById(R.id.id_pemesanan);
 
-    btn_selesai = findViewById(R.id.btn_selesai);
+        btn_selesai = findViewById(R.id.btn_selesai);
 
-    Bundle extras = getIntent().getExtras();
+        Bundle extras = getIntent().getExtras();
 
-    String judul = getIntent().getStringExtra("judul_promo");
-    String promo = getIntent().getStringExtra("nama_promo");
-    String cust = getIntent().getStringExtra("nama_cust");
-    String no_telp = getIntent().getStringExtra("no_hp");
-    String alamat = getIntent().getStringExtra("alamat_acara");
-    String harga_promo = getIntent().getStringExtra("harga_promo");
-    String id_pemesanan = getIntent().getStringExtra("id");
+        String judul = getIntent().getStringExtra("judul_promo");
+        String promo = getIntent().getStringExtra("nama_promo");
+        String cust = getIntent().getStringExtra("nama_cust");
+        String no_telp = getIntent().getStringExtra("no_hp");
+        String alamat = getIntent().getStringExtra("alamat_acara");
+        String harga_promo = getIntent().getStringExtra("harga_promo");
+        String id_pemesanan = getIntent().getStringExtra("id");
 
 
-    judul_promo.setText(judul);
-    nama_promo.setText(promo);
-    nama_cust.setText(cust);
-    no_hp.setText(no_telp);
-    alamat_acara.setText(alamat);
-    harga.setText(harga_promo);
-    id_promo.setText(id_pemesanan);
+        judul_promo.setText(judul);
+        nama_promo.setText(promo);
+        nama_cust.setText(cust);
+        no_hp.setText(no_telp);
+        alamat_acara.setText(alamat);
+        harga.setText(harga_promo);
+        id_promo.setText(id_pemesanan);
 
 
         btn_selesai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 update();
-               /* Log.e("status", id_promo.getText().toString());*/
+                /* Log.e("status", id_promo.getText().toString());*/
             }
         });
     }

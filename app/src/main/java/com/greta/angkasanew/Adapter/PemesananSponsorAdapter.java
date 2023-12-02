@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.greta.angkasanew.Model.PemesananSponsorModel;
@@ -38,6 +39,13 @@ public class PemesananSponsorAdapter extends RecyclerView.Adapter<PemesananSpons
 
         holder.PemesanName.setText(pemesananSponsorModel.getNamacustomer());
         holder.tanggalPemesanan.setText(pemesananSponsorModel.getTanggal());
+        holder.status.setText(pemesananSponsorModel.getStatus());
+
+        if("Selesai".equals(pemesananSponsorModel.getStatus())) {
+            holder.status.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.hijau));
+        }else {
+            holder.status.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.merah));
+        }
 
     }
 
@@ -49,12 +57,14 @@ public class PemesananSponsorAdapter extends RecyclerView.Adapter<PemesananSpons
     public static class PemesananSponsorViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView PemesanName;
         TextView tanggalPemesanan;
+        TextView status;
 
         public PemesananSponsorViewHolder(@NonNull View itemView) {
             super(itemView);
 
             PemesanName = itemView.findViewById(R.id.txt_nama);
             tanggalPemesanan = itemView.findViewById(R.id.txt_tanggal_sponsor);
+            status = itemView.findViewById(R.id.txt_konfirmasi_sponsor);
 
             //menambahkan listener klik pada itemview
             itemView.setOnClickListener(this);
@@ -69,7 +79,7 @@ public class PemesananSponsorAdapter extends RecyclerView.Adapter<PemesananSpons
             intent.putExtra("tanggal_acara", pemesananSponsorModelArrayList.get(position).getTanggal());
             intent.putExtra("alamat_acara", pemesananSponsorModelArrayList.get(position).getAlamat());
             intent.putExtra("proposal", pemesananSponsorModelArrayList.get(position).getProposal());
-            intent.putExtra("id_pemesanan", pemesananSponsorModelArrayList.get(position).getProposal());
+            intent.putExtra("id_pemesanan", pemesananSponsorModelArrayList.get(position).getId_pemesanan());
 
             context.startActivity(intent);
         }

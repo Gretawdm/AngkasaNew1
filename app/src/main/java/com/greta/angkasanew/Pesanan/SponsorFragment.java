@@ -112,13 +112,14 @@ public class SponsorFragment extends Fragment {
                                 JSONObject hit = jsonArray.getJSONObject(i);
                                 String namacustomer = hit.getString("nama_cust");
                                 String tanggal = hit.getString("tanggal_acara");
+                                String Status = hit.getString("status");
                                 String id_pemesanan = hit.getString("id_pemesanan");
                                 String no_hp = hit.getString("no_hp");
                                 String alamat = hit.getString("alamat_acara");
                                 String proposal = hit.getString("proposal");
                                 Log.w ("test",tanggal);
 
-                                pemesananSponsorModelArrayList.add(new PemesananSponsorModel(namacustomer,tanggal,id_pemesanan,no_hp,alamat,proposal));
+                                pemesananSponsorModelArrayList.add(new PemesananSponsorModel(namacustomer,tanggal,Status,id_pemesanan,no_hp,alamat,proposal));
                             }
 
                             pemesananSponsorAdapter = new PemesananSponsorAdapter(getContext(), pemesananSponsorModelArrayList);

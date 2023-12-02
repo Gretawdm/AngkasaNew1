@@ -57,7 +57,7 @@
             android:layout_marginStart="270dp"
             android:fontFamily="@font/poppins_medium"
             android:text="belum"
-            android:textColor="#FF3E3E"
+            android:textColor="#FF0000"
             android:textSize="11sp"
             android:textStyle="bold"/>
         <TextView

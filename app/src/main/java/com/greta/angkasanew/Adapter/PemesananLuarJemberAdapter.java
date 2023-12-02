@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.greta.angkasanew.Model.PemesananLuarJemberModel;
@@ -40,6 +41,13 @@ public class PemesananLuarJemberAdapter extends RecyclerView.Adapter<PemesananLu
         holder.PackageName.setText(pemesananLuarJemberModel.getNamapackage());
         holder.PemesanName.setText(pemesananLuarJemberModel.getNamacustomer());
         holder.tanggalPemesanan.setText(pemesananLuarJemberModel.getTanggal());
+        holder.status.setText(pemesananLuarJemberModel.getStatus());
+
+        if("Selesai".equals(pemesananLuarJemberModel.getStatus())) {
+            holder.status.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.hijau));
+        }else {
+            holder.status.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.merah));
+        }
 
     }
 
@@ -53,12 +61,15 @@ public class PemesananLuarJemberAdapter extends RecyclerView.Adapter<PemesananLu
         TextView PemesanName;
         TextView tanggalPemesanan;
 
+        TextView status;
+
         public PemesananLuarJemberViewHolder(@NonNull View itemView){
             super(itemView);
 
             PackageName = itemView.findViewById(R.id.txt_product);
             PemesanName = itemView.findViewById(R.id.txt_nama_customer);
             tanggalPemesanan = itemView.findViewById(R.id.txt_tanggal);
+            status = itemView.findViewById(R.id.txt_status);
 
             //menambahkan listener klik pada itemview
             itemView.setOnClickListener(this);
@@ -75,6 +86,8 @@ public class PemesananLuarJemberAdapter extends RecyclerView.Adapter<PemesananLu
             intent.putExtra("quota", pemesananLuarJemberModelArrayList.get(position).getQuota());
             intent.putExtra("unlimited", pemesananLuarJemberModelArrayList.get(position).getUnlimited());
             intent.putExtra("layout", pemesananLuarJemberModelArrayList.get(position).getNama_layout());
+            intent.putExtra("id", pemesananLuarJemberModelArrayList.get(position).getId_pemesanan());
+
             context.startActivity(intent);
         }
 

@@ -86,6 +86,11 @@
                             android:gravity=""
                             android:fontFamily="@font/poppins_medium"
                             android:textSize="12sp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
+                            android:id="@+id/id_sponsor"/>
 
                     </LinearLayout>
 
@@ -221,12 +226,6 @@
                             android:fontFamily="@font/poppins_medium"
                             android:textSize="12sp"/>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:visibility="gone"
-                            android:id="@+id/id_sponsor"/>
-
                     </LinearLayout>
 
 
@@ -248,7 +247,7 @@
                 android:layout_marginRight="20dp"
                 android:paddingTop="20dp"
                 android:fontFamily="@font/poppins_black"
-                android:textColor="@color/white"/>
+                android:textColor="@color/abuabu"/>
         </LinearLayout>
 
 

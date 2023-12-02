@@ -1,5 +1,6 @@
 package com.greta.angkasanew.Home;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +38,7 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
+    EditText search;
 
 
     private RequestQueue requestQueue;
@@ -99,10 +103,22 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        /*search = rootView.findViewById(R.id.txt_search);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                search.setFocusable(true);
+                search.setFocusableInTouchMode(true);
+                search.requestFocus();
+
+                showKeyboard(requireContext(), search);
+            }
+        });*/
+        /*txtnama_lengkap.setOnClickListener(new View.OnClickListener() {*/
+
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_home, container, false);
         setRecyclerview(rootView); //manggil method recycler pesanan
-
         pemesananModelArrayList = new ArrayList<>();
         // Mendapatkan referensi TextView
         txtNamaLengkap = (TextView) rootView.findViewById(R.id.nama_lengkap);
@@ -151,6 +167,7 @@ public class HomeFragment extends Fragment {
                                 String nama_package = hit.getString("nama_package");
                                 String nama_cust = hit.getString("nama_cust");
                                 String tanggal = hit.getString("tanggal_acara");
+                                String Status = hit.getString("status");
                                 String id = hit.getString("id_pemesanan");
                                 String no_hp = hit.getString("no_hp");
                                 String nama_layout = hit.getString("nama_layout");
@@ -159,7 +176,7 @@ public class HomeFragment extends Fragment {
                                 String bukti_bayar = hit.getString("bukti_bayar");
                                 String alamat = hit.getString("alamat_acara");
 
-                                pemesananModelArrayList.add(new PemesananModel( nama_cust,nama_package, tanggal, id,no_hp,nama_layout,alamat,quota,unlimited,bukti_bayar));
+                                pemesananModelArrayList.add(new PemesananModel( nama_cust,nama_package, tanggal, Status, id,no_hp,nama_layout,alamat,quota,unlimited,bukti_bayar));
                             }
 
                             pemesananAdapter = new PemesananAdapter(getContext(), pemesananModelArrayList);
@@ -177,6 +194,13 @@ public class HomeFragment extends Fragment {
         });
         requestQueue.add(request);
     }
+   /* private void showKeyboard(Context context, View view) {
+        InputMethodManager inputMethodManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (inputMethodManager != null) {
+            inputMethodManager.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
+        }
+    }*/
+
 }
 
 

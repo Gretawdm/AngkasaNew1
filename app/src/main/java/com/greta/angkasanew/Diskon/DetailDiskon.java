@@ -1,8 +1,5 @@
 package com.greta.angkasanew.Diskon;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,21 +18,22 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.greta.angkasanew.API.Api;
-import com.greta.angkasanew.Login.LoginActivity;
-import com.greta.angkasanew.Main.MainActivity;
 import com.greta.angkasanew.R;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import java.util.Map;
 
 public class DetailDiskon extends AppCompatActivity {
     TextView judul_promo,nama_promo,id_pro;
     EditText harga;
-    Button btn_send;
+    Button btn_send,btn_batal;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +45,7 @@ public class DetailDiskon extends AppCompatActivity {
         harga = findViewById(R.id.txt_harga);
         id_pro = findViewById(R.id.id_promo);
         btn_send = findViewById(R.id.btn_send);
+        btn_batal = findViewById(R.id.btn_batal);
 
         Bundle extras = getIntent().getExtras();
         String judul = getIntent().getStringExtra("judul_promo");
@@ -69,8 +68,23 @@ public class DetailDiskon extends AppCompatActivity {
             Log.e("id", id_pro.getText().toString());
             }
         });
+
+        btn_batal.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                getFragment();
+            }
+        });
+
     }
 
+    private void getFragment() {
+            DiskonFragment fragment = new DiskonFragment();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.flFragment, fragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+    }
     private void update(){
         StringRequest request = new StringRequest(Request.Method.POST, Api.urlUpdatePromo, response -> {
             try {
@@ -82,7 +96,7 @@ public class DetailDiskon extends AppCompatActivity {
 
                 if (code == 200 && status.equals("Sukses")) {
 
-                    Toast.makeText(getApplicationContext(), "Berhasil di ubah", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Pembaruan Harga Berhasil", Toast.LENGTH_SHORT).show();
                   /*  Intent intent = new Intent(DetailDiskon.this, MainActivity.class);
                     startActivity(intent);*/
                 }else{

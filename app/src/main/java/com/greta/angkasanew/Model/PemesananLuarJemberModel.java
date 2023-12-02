@@ -5,22 +5,32 @@ public class PemesananLuarJemberModel {
     private String namapackage;
     private String tanggal;
     private String id_pemesanan;
+    private String status;
     private String no_hp;
     private String nama_layout;
     private String alamat;
     private String quota;
     private String unlimited;
 
-    public PemesananLuarJemberModel(String namacustomer, String namapackage, String tanggal, String id_pemesanan, String no_hp, String nama_layout, String alamat, String quota, String unlimited) {
+    public PemesananLuarJemberModel(String namacustomer, String namapackage, String tanggal, String status, String id_pemesanan,String no_hp, String nama_layout, String alamat, String quota, String unlimited) {
         this.namacustomer = namacustomer;
         this.namapackage = namapackage;
         this.tanggal = tanggal;
+        this.status = status;
         this.id_pemesanan = id_pemesanan;
         this.no_hp = no_hp;
         this.nama_layout = nama_layout;
         this.alamat = alamat;
         this.quota = quota;
         this.unlimited = unlimited;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getNamacustomer() {
