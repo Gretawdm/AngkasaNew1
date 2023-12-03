@@ -28,7 +28,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/edit_cardview"
         android:layout_width="320dp"
-        android:layout_height="400dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="100dp"
@@ -71,7 +71,6 @@
                     android:fontFamily="@font/poppins_medium"
                     android:hint="Nama Lengkap"
                     android:focusable="false"
-                    android:focusableInTouchMode="true"
                     android:inputType="text"
                     android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -242,10 +241,10 @@
 
             <Button
                 android:id="@+id/btn_simpan"
-                android:layout_width="150dp"
+                android:layout_width="280dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="85dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="-20dp"
                 android:layout_marginEnd="85dp"
                 android:layout_marginBottom="16dp"
                 android:backgroundTint="#101F24"
@@ -257,8 +256,26 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tilinput5" />
+
+            <Button
+                android:id="@+id/btn_logout"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/merah"
+                android:fontFamily="@font/poppins_black"
+                android:text="Logout"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/btn_simpan"
+                app:layout_constraintStart_toStartOf="@+id/btn_simpan"
+                app:layout_constraintTop_toBottomOf="@+id/btn_simpan" />
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

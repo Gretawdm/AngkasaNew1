@@ -107,8 +107,8 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "No data found in the response.", Toast.LENGTH_SHORT).show();
                     }
                     }else if (code == 401) {
-                    Toast.makeText(this, "Password atau Email Salah", Toast.LENGTH_SHORT).show();
-                } else if (code == 404 && !status.equals("Sukses")) {
+                    Toast.makeText(this, "Hanya Karyawan yang memiliki akses login", Toast.LENGTH_SHORT).show();
+                } else if (code == 404 && !status.equals("Password atau Email Salah, silahkan ketik dengan benar!")) {
                     Toast.makeText(getApplicationContext(), status, Toast.LENGTH_SHORT).show();
                 }
             } catch (JSONException e) {

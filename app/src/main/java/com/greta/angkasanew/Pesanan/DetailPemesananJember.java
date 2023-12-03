@@ -71,8 +71,13 @@ public class DetailPemesananJember extends AppCompatActivity {
         String hargaqouta = getIntent().getStringExtra("hargaqouta");
         String bukti_bayar = getIntent().getStringExtra("bukti_bayar");
         if(bukti_bayar != null){
-            String urlbuktibayar = Api.ip+"/img/" + bukti_bayar;
-            Glide.with(this).load(urlbuktibayar).into(bayar);
+
+            String urlbuktibayar = "https://angkasa.tifb.myhost.id/angkasa/img/" + bukti_bayar;
+
+            int targetWidth = 850; // ganti dengan lebar yang diinginkan
+            int targetHeight = 1600; // ganti dengan tinggi yang diinginkan
+
+            Glide.with(this).load(urlbuktibayar).override(targetWidth, targetHeight).into(bayar);
         }
         String id_pemesanan = getIntent().getStringExtra("id");
 

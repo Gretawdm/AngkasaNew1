@@ -1,10 +1,12 @@
 package com.greta.angkasanew.AKun;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -107,6 +109,29 @@ public class AkunFragment extends Fragment {
         return view;
     }
 
+    private void showLogoutDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle("Konfirmasi Logout");
+        builder.setMessage("Apakah Anda ingin logout dari aplikasi?");
+        builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Panggil metode untuk melakukan logout
+                logout();
+            }
+        });
+        builder.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Batal logout
+                dialog.dismiss();
+            }
+        });
+        builder.show();
+        
+    }
+
+
     private void initprofile() {
         txtnama_lengkap = view.findViewById(R.id.txtNamaLengkap);
         txt_email = view.findViewById(R.id.txtEmail);
@@ -123,7 +148,7 @@ public class AkunFragment extends Fragment {
             }
         });
 
-        txtnama_lengkap.setOnClickListener(new View.OnClickListener() {
+       /* txtnama_lengkap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 txtnama_lengkap.setFocusable(true);
@@ -132,7 +157,7 @@ public class AkunFragment extends Fragment {
 
                 showKeyboard(requireContext(), txtnama_lengkap);
             }
-        });
+        });*/
 
         txt_email.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/bfgactivitynewg"
+    android:background="@drawable/bfgactivitynew"
     tools:context=".Diskon.DetailDiskon"
     android:layout_height="match_parent">
 
@@ -21,9 +21,8 @@
             android:layout_height="match_parent"
             android:fontFamily="@font/poppins_black"
             android:gravity="center"
-            android:background=""
             android:text="Detail Promo"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="18sp" />
     </LinearLayout>
 
@@ -36,14 +35,13 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="350dp"
-            android:layout_height="380dp"
+            android:layout_height="wrap_content"
             app:cardCornerRadius="20dp"
             app:cardElevation="20dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginBottom="100dp"
             android:layout_gravity="center"
-            app:cardBackgroundColor="@color/abuabu"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginTop="20dp">
+            app:cardBackgroundColor="@color/abuabu">
 
                     <LinearLayout
                         android:paddingTop="10dp"
@@ -126,6 +124,54 @@
                     android:fontFamily="@font/poppins_medium"
                     android:textSize="15sp"
                     android:background="@drawable/backgroundtext"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Input Harga Promo !!!"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginRight="20dp"
+                                android:paddingTop="20dp"
+                                android:fontFamily="@font/poppins_black"
+                                android:textColor="@color/white"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_marginBottom="20dp"
+                            android:layout_height="wrap_content">
+
+                            <Button
+                                android:id="@+id/btn_batal"
+                                android:layout_marginStart="20dp"
+                                android:layout_width="140dp"
+                                android:backgroundTint="@color/merah"
+                                android:drawableEnd="@drawable/baseline_cancel_24"
+                                android:text="Batal"
+                                android:fontFamily="@font/poppins_black"
+                                android:textSize="15sp"
+                                android:textColor="@color/white"
+                                android:layout_height="50dp" />
+
+                            <Button
+                                android:id="@+id/btn_send"
+                                android:layout_width="140dp"
+                                android:layout_height="50dp"
+                                android:layout_marginStart="30dp"
+                                android:drawableEnd="@drawable/baseline_check_circle_24"
+                                android:text="Send"
+                                android:fontFamily="@font/poppins_black"
+                                android:textSize="15sp"
+                                android:backgroundTint="@color/hijau"
+                                android:textColor="@color/white" />
+                        </LinearLayout>
+
+
 
             </LinearLayout>
 
@@ -133,53 +179,7 @@
 
                    
         </androidx.cardview.widget.CardView>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Input Harga Promo !!!"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:paddingTop="20dp"
-                android:fontFamily="@font/poppins_black"
-                android:textColor="@color/abuabu"/>
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp">
-
-            <Button
-                android:id="@+id/btn_batal"
-                android:layout_marginStart="50dp"
-                android:layout_width="140dp"
-                android:backgroundTint="@color/merah"
-                android:drawableEnd="@drawable/baseline_cancel_24"
-                android:text="Batal"
-                android:fontFamily="@font/poppins_black"
-                android:textSize="15sp"
-                android:textColor="@color/white"
-                android:layout_height="50dp" />
-
-            <Button
-                android:id="@+id/btn_send"
-                android:layout_width="140dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="30dp"
-                android:drawableEnd="@drawable/baseline_check_circle_24"
-                android:text="Send"
-                android:fontFamily="@font/poppins_black"
-                android:textSize="15sp"
-                android:backgroundTint="@color/hijau"
-                android:textColor="@color/white" />
-
-        </LinearLayout>
 
 
     </LinearLayout>

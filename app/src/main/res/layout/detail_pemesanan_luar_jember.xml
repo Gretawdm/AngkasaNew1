@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/bgactivity"
+    android:background="@drawable/bfgactivitynew"
     tools:context=".Pesanan.DetailPemesananLuarJember"
     android:layout_height="match_parent">
 
@@ -23,7 +23,7 @@
             android:fontFamily="@font/poppins_black"
             android:gravity="center"
             android:text="Detail Pemesanan Luar Jember"
-            android:textColor="@color/abuabu"
+            android:textColor="@color/white"
             android:textSize="18sp" />
     </LinearLayout>
 
@@ -35,13 +35,13 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="350dp"
-            android:layout_height="580dp"
+            android:layout_height="600dp"
             app:cardCornerRadius="20dp"
+            android:layout_marginTop="10dp"
             app:cardElevation="20dp"
             android:layout_gravity="center"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginTop="20dp"
             app:cardBackgroundColor="@color/abuabu">
 
             <ScrollView
