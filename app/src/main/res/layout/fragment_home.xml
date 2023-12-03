@@ -95,6 +95,7 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rycle"
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:listitem="@layout/list"/>
@@ -128,6 +129,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/ryclediskon"
                     android:layout_width="wrap_content"
+                    android:orientation="horizontal"
                     tools:listitem="@layout/card_diskon_home"
                     android:layout_height="match_parent" />
 

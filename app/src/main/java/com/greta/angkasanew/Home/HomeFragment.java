@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,7 +23,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.greta.angkasanew.API.Api;
+import com.greta.angkasanew.Adapter.DiskonAdapter;
+import com.greta.angkasanew.Adapter.DiskonHomeAdapter;
 import com.greta.angkasanew.Adapter.PemesananAdapter;
+import com.greta.angkasanew.Model.DiskonHomeModel;
 import com.greta.angkasanew.Model.PemesananModel;
 import com.greta.angkasanew.R;
 
@@ -55,9 +59,12 @@ public class HomeFragment extends Fragment {
     private TextView txtNamaLengkap;
     private String KEY_NAME = "NAMA";
     private ArrayList<PemesananModel> pemesananModelArrayList;
+    private ArrayList<DiskonHomeModel> diskonHomeModelArrayList;
+    private DiskonHomeAdapter diskonHomeAdapter;
     private String[] nama_package;
     private String[] nama_cust;
     private RecyclerView recyclerview;
+    private RecyclerView recyclerviewDiskon;
     private PemesananAdapter pemesananAdapter;
 
 
@@ -103,24 +110,15 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        /*search = rootView.findViewById(R.id.txt_search);
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                search.setFocusable(true);
-                search.setFocusableInTouchMode(true);
-                search.requestFocus();
-
-                showKeyboard(requireContext(), search);
-            }
-        });*/
-        /*txtnama_lengkap.setOnClickListener(new View.OnClickListener() {*/
 
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_home, container, false);
-        setRecyclerview(rootView); //manggil method recycler pesanan
+        setRecyclerview(rootView);
+        setRecyclerviewDiskon(rootView);//manggil method recycler pesanan
         pemesananModelArrayList = new ArrayList<>();
+        diskonHomeModelArrayList = new ArrayList<>();
         // Mendapatkan referensi TextView
+
         txtNamaLengkap = (TextView) rootView.findViewById(R.id.nama_lengkap);
         // Mendapatkan data dari Intent
         Bundle extras = getActivity().getIntent().getExtras();
@@ -130,6 +128,7 @@ public class HomeFragment extends Fragment {
         if (getContext() != null) {
             requestQueue = Volley.newRequestQueue(getContext());
             perseJSON(); //panggil method JSON
+            Diskon();
         } else {
             Toast.makeText(getContext(), "Konteks Null", Toast.LENGTH_SHORT).show();
         }
@@ -151,6 +150,12 @@ public class HomeFragment extends Fragment {
 
     }
 
+    private void setRecyclerviewDiskon(View rootView){
+        recyclerviewDiskon = rootView.findViewById(R.id.ryclediskon);
+        recyclerviewDiskon.setHasFixedSize(true);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerviewDiskon.setLayoutManager(layoutManager);
+    }
     private void perseJSON(){
      /*  String url = "http://192.168.21.87/project_sem3/ApiPemesanan.php";*/
 
@@ -194,15 +199,47 @@ public class HomeFragment extends Fragment {
         });
         requestQueue.add(request);
     }
-   /* private void showKeyboard(Context context, View view) {
+
+    private void Diskon(){
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, Api.urlPromo, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            JSONArray jsonArray = response.getJSONArray("data");
+
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject hit = jsonArray.getJSONObject(i);
+
+                                String bulan = hit.getString("bulan");
+                                String judul_promo = hit.getString("judul_promo");
+
+                                diskonHomeModelArrayList.add(new DiskonHomeModel(judul_promo,bulan));
+                            }
+
+                            diskonHomeAdapter = new DiskonHomeAdapter(getContext(), diskonHomeModelArrayList);
+                            recyclerviewDiskon.setAdapter(diskonHomeAdapter);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        requestQueue.add(request);
+    }
+}
+
+/* private void showKeyboard(Context context, View view) {
         InputMethodManager inputMethodManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
         if (inputMethodManager != null) {
             inputMethodManager.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
         }
     }*/
-
-}
-
 
 
 

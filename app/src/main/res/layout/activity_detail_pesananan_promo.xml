@@ -14,7 +14,6 @@
         android:gravity="center"
         android:orientation="vertical">
         <TextView
-            android:drawableStart="@drawable/baseline_keyboard_backspace_24"
             android:id="@+id/header"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"

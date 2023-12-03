@@ -1,7 +1,7 @@
 package com.greta.angkasanew.API;
 
 public class Api {
-    public static String ip = "https://angkasa-photobooth.000webhostapp.com/";
+    public static String ip = "https://angkasa.tifb.myhost.id/angkasa/api/";
 
    /* public static final String urlLogin = "http://"+ip+"/project_sem3/ApiLogin.php";
     public static final String urlPemesananHome = "http://"+ip+"/project_sem3/ApiPemesanan.php";
