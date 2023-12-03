@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.content.Intent;
 import android.view.inputmethod.InputMethod;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -26,6 +27,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.greta.angkasanew.API.Api;
+import com.greta.angkasanew.Login.LoginActivity;
 import com.greta.angkasanew.R;
 
 import org.json.JSONException;
@@ -42,7 +44,7 @@ import java.util.Map;
 public class AkunFragment extends Fragment {
     EditText txtnama_lengkap, txt_email, txt_notelp;
     TextView gender,jabatan,id;
-    Button btn_simpan;
+    Button btn_simpan,btn_logout;
 
     private View view;
     private SharedPreferences preferences;
@@ -128,7 +130,14 @@ public class AkunFragment extends Fragment {
             }
         });
         builder.show();
-        
+
+    }
+
+    private void logout() {
+        Intent intent = new Intent(getActivity(), LoginActivity.class);
+        startActivity(intent);
+        getActivity().finish();  // Tutup fragment atau halaman saat ini
+        Toast.makeText(requireContext(), "Anda telah logout", Toast.LENGTH_SHORT).show();
     }
 
 
@@ -140,11 +149,19 @@ public class AkunFragment extends Fragment {
         jabatan = view.findViewById(R.id.txtJabatan);
         id = view.findViewById(R.id.id_user);
         btn_simpan = view.findViewById(R.id.btn_simpan);
+        btn_logout = view.findViewById(R.id.btn_logout);
 
         btn_simpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 update();
+            }
+        });
+
+        btn_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showLogoutDialog();
             }
         });
 
